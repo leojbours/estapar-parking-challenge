@@ -1,0 +1,11 @@
+services:
+  dbservice:
+    container_name: parkingdb
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: parking
+      MYSQL_ROOT_PASSWORD: root
+#    volumes:
+#      - /Users/leonardobourscheid/docker/volumes/parking-data:/var/lib/mysql
