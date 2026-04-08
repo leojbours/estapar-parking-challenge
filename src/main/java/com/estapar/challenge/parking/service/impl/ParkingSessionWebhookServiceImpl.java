@@ -60,7 +60,7 @@ public class ParkingSessionWebhookServiceImpl implements ParkingSessionWebhookSe
     BigDecimal occupationRatio = getOccupationRatio(parkingSession.getEntryTime());
 
     if (occupationRatio.compareTo(BigDecimal.ONE) > 0) {
-      throw new GarageFullException("A garagem está com todas suas vagas elegíveis ocupadas.");
+      throw new GarageFullException("A garagem está com todas suas vagas elegíveis ocupadas. Tente novamente mais tarde");
     }
 
     parkingSession.setEntryOccupation(occupationRatio);
@@ -69,7 +69,9 @@ public class ParkingSessionWebhookServiceImpl implements ParkingSessionWebhookSe
         LocalTime.from(parkingSession.getEntryTime())
     );
 
-    ParkingSpot parkingSpot = firstAvailableSpot.orElseThrow(NoAvailableParkingSpotException::new);
+    ParkingSpot parkingSpot = firstAvailableSpot.orElseThrow(
+        () -> new NoAvailableParkingSpotException("Não há mais vagas disponíveis!")
+    );
 
     updateSpotOccupancy(parkingSpot, true);
 
