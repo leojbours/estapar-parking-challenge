@@ -143,13 +143,13 @@ public class ParkingSessionWebhookServiceImpl implements ParkingSessionWebhookSe
   private ParkingSession getSessionFromDb(String licensePlate, ParkingEvent event) {
     Optional<ParkingSession> dbSession = parkingSessionService.findByLicensePlateAndCurrentEvent(
         licensePlate,
-        ParkingEvent.PARKED
+        event
     );
 
     return dbSession.orElseThrow(
         () -> new NoSuchSessionException("Sessão invalida para o evento " + event + " e placa " + licensePlate)
     );
-  };
+  }
 
   private BigDecimal getTotalPrice(ParkingSession parkingSession) {
     long totalMinutes = ChronoUnit.MINUTES.between(
