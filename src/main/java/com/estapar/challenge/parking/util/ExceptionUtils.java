@@ -11,7 +11,7 @@ public class ExceptionUtils {
   public static ExceptionDTO createExceptionDTO(Exception exception, WebRequest webRequest, HttpStatus status) {
     return new ExceptionDTO(
         webRequest.getDescription(false),
-        HttpStatus.BAD_REQUEST,
+        status,
         exception.getMessage(),
         Instant.now()
     );
