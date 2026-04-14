@@ -35,7 +35,7 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
   }
 
   @Override
-  public ParkingSpot findByLatitudeAndLongitude(BigDecimal latitude, BigDecimal longitude) {
+  public Optional<ParkingSpot> findByLatitudeAndLongitude(BigDecimal latitude, BigDecimal longitude) {
     return parkingSpotRepository.findByLatitudeAndLongitude(latitude, longitude);
   }
 

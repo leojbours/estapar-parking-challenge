@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ParkingSpotRepository extends JpaRepository<ParkingSpot, Integer> {
-  ParkingSpot findByLatitudeAndLongitude(BigDecimal latitude, BigDecimal longitude);
+  Optional<ParkingSpot> findByLatitudeAndLongitude(BigDecimal latitude, BigDecimal longitude);
 
   @Query("SELECT park FROM ParkingSpot park WHERE park.occupied = false AND park.parentSector.id"
       + " IN (SELECT sec.id FROM Sector sec WHERE"
