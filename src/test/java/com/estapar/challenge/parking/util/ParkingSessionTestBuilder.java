@@ -1,5 +1,6 @@
 package com.estapar.challenge.parking.util;
 
+import com.estapar.challenge.parking.dto.ParkingSessionDTO;
 import com.estapar.challenge.parking.model.ParkingEvent;
 import com.estapar.challenge.parking.model.ParkingSession;
 import com.estapar.challenge.parking.model.ParkingSpot;
@@ -27,7 +28,7 @@ public class ParkingSessionTestBuilder {
   private ParkingSessionTestBuilder() {}
 
   private Integer sessionId = DEFAULT_SESSION_ID;
-  private ParkingEvent currentEvent = DEFAULT_CURRENT_EVENT;
+  private ParkingEvent event = DEFAULT_CURRENT_EVENT;
   private LocalDateTime entryTime = DEFAULT_ENTRY_TIME;
   private String licensePlate = DEFAULT_LICENSE_PLATE;
   private ParkingSpot parkingSpot = DEFAULT_PARKING_SPOT;
@@ -41,7 +42,7 @@ public class ParkingSessionTestBuilder {
   }
 
   public ParkingSessionTestBuilder withCurrentEvent(ParkingEvent currentEvent) {
-    this.currentEvent = currentEvent;
+    this.event = currentEvent;
     return this;
   }
 
@@ -78,7 +79,7 @@ public class ParkingSessionTestBuilder {
   public ParkingSession build() {
     ParkingSession parkingSession = new ParkingSession();
     parkingSession.setSessionId(sessionId);
-    parkingSession.setCurrentEvent(currentEvent);
+    parkingSession.setCurrentEvent(event);
     parkingSession.setEntryTime(entryTime);
     parkingSession.setLicensePlate(licensePlate);
     parkingSession.setParkingSpot(parkingSpot);
@@ -87,5 +88,16 @@ public class ParkingSessionTestBuilder {
     parkingSession.setTotalPrice(totalPrice);
 
     return parkingSession;
+  }
+
+  public static ParkingSessionDTO toDTO(ParkingSession session) {
+    return new ParkingSessionDTO(
+        session.getCurrentEvent(),
+        session.getEntryTime(),
+        session.getLicensePlate(),
+        session.getParkingSpot() != null ? session.getParkingSpot().getLatitude() : null,
+        session.getParkingSpot() != null ? session.getParkingSpot().getLongitude() : null,
+        session.getExitTime()
+    );
   }
 }

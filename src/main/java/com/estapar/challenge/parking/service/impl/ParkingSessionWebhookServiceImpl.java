@@ -59,7 +59,7 @@ public class ParkingSessionWebhookServiceImpl implements ParkingSessionWebhookSe
 
     BigDecimal occupationRatio = getOccupationRatio(parkingSession.getEntryTime());
 
-    if (occupationRatio.compareTo(BigDecimal.ONE) > 0) {
+    if (occupationRatio.compareTo(BigDecimal.ONE) >= 0) {
       throw new GarageFullException("A garagem está com todas suas vagas elegíveis ocupadas. Tente novamente mais tarde");
     }
 
