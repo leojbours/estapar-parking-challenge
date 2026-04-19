@@ -15,7 +15,7 @@ class ParkingApplicationTests {
 	GarageInitializerService garageInitializerService;
 
 	@Test
-	void contextLoads() {
+	void shouldLoadApplicationContext() {
 	}
 
 }
