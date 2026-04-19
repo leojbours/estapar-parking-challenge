@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SectorRepository extends JpaRepository<Sector, String> {
 
-  @Query("SELECT SUM(sec.maxCapacity) FROM Sector sec"
+  @Query("SELECT COALESCE(SUM(sec.maxCapacity), 0) FROM Sector sec"
       + " WHERE"
       + " (sec.openTime <= sec.closeTime AND :entryTime BETWEEN sec.openTime AND sec.closeTime)"
       + " OR"

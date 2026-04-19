@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface ParkingSpotService {
   ParkingSpot save(ParkingSpot parkingSpot);
   Iterable<ParkingSpot> saveAll(Iterable<ParkingSpot> parkingSpots);
-  ParkingSpot findByLatitudeAndLongitude(BigDecimal latitude, BigDecimal longitude);
+  Optional<ParkingSpot> findByLatitudeAndLongitude(BigDecimal latitude, BigDecimal longitude);
   Optional<ParkingSpot> findFirstAvailable(LocalTime entryHour);
   Integer countOccupiedSpots();
 

@@ -39,7 +39,7 @@ public class ParkingSpot {
   @JoinColumn(name = "sector_id")
   private Sector parentSector;
 
-  public boolean isSame(BigDecimal longitude, BigDecimal latitude) {
-    return this.longitude.equals(longitude) && this.latitude.equals(latitude);
+  public boolean isSame(BigDecimal latitude, BigDecimal longitude) {
+    return this.latitude.equals(latitude) && this.longitude.equals(longitude);
   }
 }
