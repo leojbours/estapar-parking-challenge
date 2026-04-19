@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface ParkingSessionRepository extends JpaRepository<ParkingSession, Integer> {
   Optional<ParkingSession> findByLicensePlateAndCurrentEvent(String licensePlate, ParkingEvent exitTime);
 
-  @Query("SELECT SUM(session.totalPrice) FROM ParkingSession session"
+  @Query("SELECT COALESCE(SUM(session.totalPrice), 0) FROM ParkingSession session"
       + " WHERE"
       + " session.parkingSpot.parentSector.id = :sectorId"
       + " AND"

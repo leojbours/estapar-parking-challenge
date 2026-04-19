@@ -101,14 +101,15 @@ public class ParkingSessionWebhookServiceImpl implements ParkingSessionWebhookSe
     }
 
     else {
-      ParkingSpot newParkingSpot = parkingSpotService.findByLatitudeAndLongitude(
+      Optional<ParkingSpot> newParkingSpotOptional = parkingSpotService.findByLatitudeAndLongitude(
           parkingSessionDTO.lat(),
           parkingSessionDTO.lng()
       );
 
-      reassignParkingSpot(currentSession, newParkingSpot);
-
-      parkingSessionService.save(currentSession);
+      newParkingSpotOptional.ifPresent(newParkingSpot -> {
+        reassignParkingSpot(currentSession, newParkingSpot);
+        parkingSessionService.save(currentSession);
+      });
     }
   }
 
