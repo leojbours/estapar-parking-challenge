@@ -53,7 +53,6 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
   public ParkingSpot fromDto(ParkingSpotDTO parkingSpotDTO)  {
     ParkingSpot parkingSpot = new ParkingSpot();
 
-//    parkingSpot.setId(parkingSpotDTO.id());
     parkingSpot.setLatitude(parkingSpotDTO.latitude());
     parkingSpot.setLongitude(parkingSpotDTO.longitude());
     parkingSpot.setOccupied(parkingSpotDTO.occupied());

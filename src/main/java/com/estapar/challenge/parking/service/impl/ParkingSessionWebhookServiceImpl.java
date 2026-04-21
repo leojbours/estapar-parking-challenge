@@ -161,7 +161,6 @@ public class ParkingSessionWebhookServiceImpl implements ParkingSessionWebhookSe
     BigDecimal totalPrice = BigDecimal.ZERO;
 
     if (totalMinutes > 30) {
-      // Transforma minutos em horas, arrendonda para cima
       BigDecimal totalHours = new BigDecimal(Math.ceilDiv(totalMinutes, 60));
       BigDecimal pricePerHour = parkingSession.getBaseHourPrice()
           .multiply(OccupancyPricingMultiplier.multiplierFor(parkingSession.getEntryOccupation()));
