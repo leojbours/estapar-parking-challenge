@@ -5,10 +5,6 @@ spring:
     url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3306}/${DATABASE_NAME:parking}
     username: ${DATABASE_USERNAME:root}
     password: ${DATABASE_PASSWORD:root}
-#  sql:
-#    init:
-#      schema-locations: classpath:sql/jobportal-schema.sql
-#      data-locations: classpath:sql/jobportal-data.sql
   jpa:
     hibernate:
       ddl-auto: update

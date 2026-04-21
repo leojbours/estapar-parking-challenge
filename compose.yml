@@ -8,4 +8,4 @@ services:
       MYSQL_DATABASE: parking
       MYSQL_ROOT_PASSWORD: root
 #    volumes:
-#      - /Users/leonardobourscheid/docker/volumes/parking-data:/var/lib/mysql
+#      - /caminho/local/para/volume:/var/lib/mysql
